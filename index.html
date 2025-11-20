@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GiftTech Innovators</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+
+  <style>
+  .card-title {
+    font-size: 28px;
+    font-weight: 700;
+    text-align: center;
+    height: 40px;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+  .card-desc {
+    font-size: 14px;
+    color: #4b5563;
+    height: 40px;
+    text-align: center;
+    overflow: hidden;
+  }
+  .card-icon {
+    font-size: 60px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .card-box {
+    width: 320px;
+    height: 380px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .social-icon {
+    width: 24px;
+    height: 24px;
+    transition: filter 0.3s ease;
+  }
+
+  .social-icon:hover {
+    filter: brightness(0) saturate(100%) invert(29%) sepia(98%) saturate(749%) hue-rotate(180deg) brightness(95%) contrast(90%);
+  }
+
+/* Modal background */
+.modal-bg {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.4);
+  backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 50;
+}
+
+/* Modal box */
+.modal-box {
+  background: linear-gradient(135deg, #fbcfe8, #f87171); /* soft pink to light red */
+  color: white;
+  border-radius: 1rem;
+  padding: 2rem;
+  max-width: 600px;
+  width: 90%;
+  text-align: center;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+  position: relative;
+}
+
+/* Close button */
+.modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+
+</style>
+
+</head>
+<body class="bg-white text-gray-800">
+
+  <!-- Top Contact Bar -->
+  <div class="bg-blue-600 text-black text-sm py-2 px-4 flex justify-between items-center">
+    <span>📞 +254 734 86 05 32</span>
+    <span>📧 info@giftechinnovators.com</span>
+  </div>
+
+<!-- Navigation -->
+<!-- Navigation -->
+<nav class="bg-white shadow-md sticky top-0 z-50">
+  <div class="w-full px-4 py-4 flex justify-between items-center">
+    
+    <!-- Company Logo -->
+<div class="flex items-center space-x-2">
+  <img src="assets/logo/giftech-logo.png" alt="GiftTech Innovators Logo" class="h-10 w-auto" />
+  <span class="text-xl font-bold text-gray-900">GiftTech Innovators</span>
+</div>
+
+    
+    <!-- Right side: nav links (desktop) -->
+    <div class="hidden md:flex items-center space-x-6">
+      <a href="#courses" class="text-gray-700 hover:text-blue-600 font-medium transition duration-200">Courses</a>
+      <a href="#about" class="text-gray-700 hover:text-blue-600 font-medium transition duration-200">About</a>
+      <a href="#contact" class="text-gray-700 hover:text-blue-600 font-medium transition duration-200">Contact</a>
+      <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition duration-200">School Section</button>
+      <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition duration-200">Student Section</button>
+    </div>
+
+    <!-- Hamburger button (mobile) -->
+    <button id="menu-toggle" class="md:hidden flex flex-col justify-between w-8 h-6 focus:outline-none">
+      <span class="block w-full h-1 bg-gray-700 rounded"></span>
+      <span class="block w-full h-1 bg-gray-700 rounded"></span>
+      <span class="block w-full h-1 bg-gray-700 rounded"></span>
+    </button>
+  </div>
+
+  <!-- Mobile dropdown menu -->
+  <div id="mobile-menu" class="hidden md:hidden px-4 pb-4 space-y-4 transform transition-all duration-300 ease-out origin-top">
+    <a href="#courses" class="block text-gray-700 hover:text-blue-600 font-medium">Courses</a>
+    <a href="#about" class="block text-gray-700 hover:text-blue-600 font-medium">About</a>
+    <a href="#contact" class="block text-gray-700 hover:text-blue-600 font-medium">Contact</a>
+    <button class="w-full bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition duration-200">School Section</button>
+    <button class="w-full bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition duration-200">Student Section</button>
+  </div>
+</nav>
+
+<script>
+  const menuToggle = document.getElementById('menu-toggle');
+  const mobileMenu = document.getElementById('mobile-menu');
+
+  menuToggle.addEventListener('click', () => {
+    if (mobileMenu.classList.contains('hidden')) {
+      mobileMenu.classList.remove('hidden');
+      mobileMenu.classList.add('scale-y-100');
+    } else {
+      mobileMenu.classList.add('hidden');
+      mobileMenu.classList.remove('scale-y-100');
+    }
+  });
+</script>
+
+  <!-- Hero Section -->
+  <section class="text-center py-20 px-4 bg-blue-50">
+    <h1 class="text-5xl font-bold text-gray-900 mb-4">Coding in Kenyan Schools</h1>
+    <p class="text-xl text-gray-600 mb-8">We empower schools to teach Computer Science</p>
+  </section>
+
+<!-- Courses Section -->
+<section id="courses" class="py-20 bg-white">
+  <div class="text-center mb-12">
+    <h2 class="text-4xl font-bold text-gray-900">Our Courses</h2>
+  </div>
+
+  <!-- Responsive auto-fit grid -->
+  <div class="max-w-7xl mx-auto grid gap-8"
+       style="grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));">
+    
+    <!-- HTML -->
+<div class="relative card-box bg-white bg-opacity-30 backdrop-blur-md border border-white border-opacity-20 rounded-xl p-10 shadow-lg transition-transform duration-300 hover:scale-105 hover:shadow-xl flex flex-col justify-between text-center overflow-hidden">
+  <div class="absolute inset-x-0 top-0 flex justify-center">
+    <div class="w-28 h-28 bg-gradient-to-r from-pink-200 via-blue-200 to-green-200 rounded-full blur-xl opacity-70"></div>
+  </div>
+  <div class="space-y-2 relative">
+    <div class="card-icon">🌐</div>
+    <h3 class="card-title">HTML</h3>
+    <p class="card-desc">Learn to make websites</p>
+  </div>
+  <button class="mt-6 bg-blue-600 text-white px-6 py-3 rounded hover:bg-blue-700 transition" onclick="openModal('HTML')">Read More</button>
+</div>
+
+<!-- CSS -->
+<div class="relative card-box bg-white bg-opacity-30 backdrop-blur-md border border-white border-opacity-20 rounded-xl p-10 shadow-lg transition-transform duration-300 hover:scale-105 hover:shadow-xl flex flex-col justify-between text-center overflow-hidden">
+  <div class="absolute inset-x-0 top-0 flex justify-center">
+    <div class="w-28 h-28 bg-gradient-to-r from-green-200 via-pink-200 to-blue-200 rounded-full blur-xl opacity-70"></div>
+  </div>
+  <div class="space-y-2 relative">
+    <div class="card-icon">🎨</div>
+    <h3 class="card-title">CSS</h3>
+    <p class="card-desc">Explore web design</p>
+  </div>
+  <button class="mt-6 bg-blue-600 text-white px-6 py-3 rounded hover:bg-blue-700 transition" onclick="openModal('CSS')">Read More</button>
+</div>
+
+<!-- Artificial Intelligence -->
+<div class="relative card-box bg-white bg-opacity-30 backdrop-blur-md border border-white border-opacity-20 rounded-xl p-10 shadow-lg transition-transform duration-300 hover:scale-105 hover:shadow-xl flex flex-col justify-between text-center overflow-hidden">
+  <div class="absolute inset-x-0 top-0 flex justify-center">
+    <div class="w-28 h-28 bg-gradient-to-r from-blue-200 via-green-200 to-pink-200 rounded-full blur-xl opacity-70"></div>
+  </div>
+  <div class="space-y-2 relative">
+    <div class="card-icon">🤖</div>
+    <h3 class="card-title">A.I</h3>
+    <p class="card-desc">Learn and interact with A I</p>
+  </div>
+  <button class="mt-6 bg-blue-600 text-white px-6 py-3 rounded hover:bg-blue-700 transition" onclick="openModal('Artificial Intelligence')">Read More</button>
+</div>
+
+<!-- Robotics -->
+<div class="relative card-box bg-white bg-opacity-30 backdrop-blur-md border border-white border-opacity-20 rounded-xl p-10 shadow-lg transition-transform duration-300 hover:scale-105 hover:shadow-xl flex flex-col justify-between text-center overflow-hidden">
+  <div class="absolute inset-x-0 top-0 flex justify-center">
+    <div class="w-28 h-28 bg-gradient-to-r from-pink-200 via-green-200 to-blue-200 rounded-full blur-xl opacity-70"></div>
+  </div>
+  <div class="space-y-2 relative">
+    <div class="card-icon">⚙️</div>
+    <h3 class="card-title">Robotics</h3>
+    <p class="card-desc">Design and build robots</p>
+  </div>
+  <button class="mt-6 bg-blue-600 text-white px-6 py-3 rounded hover:bg-blue-700 transition" onclick="openModal('Robotics')">Read More</button>
+</div>
+
+<!-- Scratch Programming -->
+<div class="relative card-box bg-white bg-opacity-30 backdrop-blur-md border border-white border-opacity-20 rounded-xl p-10 shadow-lg transition-transform duration-300 hover:scale-105 hover:shadow-xl flex flex-col justify-between text-center overflow-hidden">
+  <div class="absolute inset-x-0 top-0 flex justify-center">
+    <div class="w-28 h-28 bg-gradient-to-r from-green-200 via-blue-200 to-pink-200 rounded-full blur-xl opacity-70"></div>
+  </div>
+  <div class="space-y-2 relative">
+    <div class="card-icon">🎯</div>
+    <h3 class="card-title">Scratch  Dev</h3>
+    <p class="card-desc">Intro to programming</p>
+  </div>
+  <button class="mt-6 bg-blue-600 text-white px-6 py-3 rounded hover:bg-blue-700 transition" onclick="openModal('Scratch Programming')">Read More</button>
+</div>
+
+<!-- Python -->
+<div class="relative card-box bg-white bg-opacity-30 backdrop-blur-md border border-white border-opacity-20 rounded-xl p-10 shadow-lg transition-transform duration-300 hover:scale-105 hover:shadow-xl flex flex-col justify-between text-center overflow-hidden">
+  <div class="absolute inset-x-0 top-0 flex justify-center">
+    <div class="w-28 h-28 bg-gradient-to-r from-blue-200 via-pink-200 to-green-200 rounded-full blur-xl opacity-70"></div>
+  </div>
+  <div class="space-y-2 relative">
+    <div class="card-icon">🐍</div>
+    <h3 class="card-title">Python</h3>
+    <p class="card-desc">Learn Python basics</p>
+  </div>
+  <button class="mt-6 bg-blue-600 text-white px-6 py-3 rounded hover:bg-blue-700 transition" onclick="openModal('Python for Kids')">Read More</button>
+</div>
+
+<!-- JavaScript -->
+<div class="relative card-box bg-white bg-opacity-30 backdrop-blur-md border border-white border-opacity-20 rounded-xl p-10 shadow-lg transition-transform duration-300 hover:scale-105 hover:shadow-xl flex flex-col justify-between text-center overflow-hidden">
+  <div class="absolute inset-x-0 top-0 flex justify-center">
+    <div class="w-28 h-28 bg-gradient-to-r from-pink-200 via-green-200 to-blue-200 rounded-full blur-xl opacity-70"></div>
+  </div>
+  <div class="space-y-2 relative">
+    <div class="card-icon">⚡</div>
+    <h3 class="card-title">JavaScript</h3>
+    <p class="card-desc">Learn JavaScript programming</p>
+  </div>
+  <button class="mt-6 bg-blue-600 text-white px-6 py-3 rounded hover:bg-blue-700 transition" onclick="openModal('JavaScript')">Read More</button>
+</div>
+
+<!-- Game Development -->
+<div class="relative card-box bg-white bg-opacity-30 backdrop-blur-md border border-white border-opacity-20 rounded-xl p-10 shadow-lg transition-transform duration-300 hover:scale-105 hover:shadow-xl flex flex-col justify-between text-center overflow-hidden">
+  <div class="absolute inset-x-0 top-0 flex justify-center">
+    <div class="w-28 h-28 bg-gradient-to-r from-green-200 via-blue-200 to-pink-200 rounded-full blur-xl opacity-70"></div>
+  </div>
+  <div class="space-y-2 relative">
+    <div class="card-icon">🎮</div>
+    <h3 class="card-title">Game Dev</h3>
+    <p class="card-desc">Build your own games</p>
+  </div>
+  <button class="mt-6 bg-blue-600 text-white px-6 py-3 rounded hover:bg-blue-700 transition" onclick="openModal('Game Development')">Read More</button>
+</div>
+<!-- Android Development -->
+<div class="relative card-box bg-white bg-opacity-30 backdrop-blur-md border border-white border-opacity-20 rounded-xl p-10 shadow-lg transition-transform duration-300 hover:scale-105 hover:shadow-xl flex flex-col justify-between text-center overflow-hidden">
+  <div class="absolute inset-x-0 top-0 flex justify-center">
+    <div class="w-28 h-28 bg-gradient-to-r from-green-200 via-blue-200 to-pink-200 rounded-full blur-xl opacity-70"></div>
+  </div>
+  <div class="space-y-2 relative">
+    <div class="card-icon">📱</div>
+    <h3 class="card-title">Android Dev</h3>
+    <p class="card-desc">Build your own android games</p>
+  </div>
+  <button class="mt-6 bg-blue-600 text-white px-6 py-3 rounded hover:bg-blue-700 transition" onclick="openModal('Game Development')">Read More</button>
+</div>
+
+
+
+</section>
+
+
+ <!-- Contact Section -->
+<!-- Contact Section -->
+<section id="contact" class="py-20 bg-blue-100">
+  <div class="max-w-4xl mx-auto px-4 text-center">
+    
+    <!-- Company name -->
+    <h1 class="text-2xl font-normal text-blue-300 mb-6">GiftTech Innovators</h1>
+    
+    <!-- Contact info -->
+    <h2 class="text-3xl font-bold text-gray-900 mb-4">Have further questions?</h2>
+    <p class="text-lg text-gray-700 mb-6">We are here to help!</p>
+    
+    <!-- Contact buttons -->
+    <div class="flex flex-col sm:flex-row gap-4 justify-center mb-8">
+      <button class="bg-blue-600 text-white px-6 py-3 rounded hover:bg-blue-700 transition duration-200">
+        📞 +254 734 86 05 32
+      </button>
+      <button class="bg-blue-600 text-white px-6 py-3 rounded hover:bg-blue-700 transition duration-200">
+        📧 info@gifttechinnovators.com
+      </button>
+    </div>
+    
+    <!-- Tutors Login link -->
+    <div class="mt-6">
+      <a href="/tutors-login" class="text-blue-600 font-semibold text-lg hover:underline">
+        Tutors Login
+      </a>
+    </div>
+    
+ <!-- Follow Us On (social media links) -->
+<div class="mt-8">
+  <h3 class="text-xl font-semibold text-gray-900 mb-4">Follow Us On:</h3>
+  <div class="flex justify-center space-x-6">
+    <a href="https://facebook.com/gifttechinnovators" target="_blank">
+      <img src="assets/social-tags/facebook.png" alt="Facebook" class="social-icon" />
+    </a>
+    <a href="https://twitter.com/gifttechinnovators" target="_blank">
+      <img src="assets/social-tags/x.png" alt="X" class="social-icon" />
+    </a>
+    <a href="https://instagram.com/gifttechinnovators" target="_blank">
+      <img src="assets/social-tags/instagram.png" alt="Instagram" class="social-icon" />
+    </a>
+    <a href="https://linkedin.com/company/gifttechinnovators" target="_blank">
+      <img src="assets/social-tags/linkedin.png" alt="LinkedIn" class="social-icon" />
+    </a>
+    <a href="https://tiktok.com/@gifttechinnovators" target="_blank">
+      <img src="assets/social-tags/tiktok.png" alt="TikTok" class="social-icon" />
+    </a>
+    <a href="https://youtube.com/@gifttechinnovators" target="_blank">
+      <img src="assets/social-tags/youtube.png" alt="YouTube" class="social-icon" />
+    </a>
+  </div>
+</div>
+
+
+  </div>
+</section>
+
+
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-white py-8 text-center text-sm">
+    &copy; 2025 GiftTech Innovators. All rights reserved.
+  </footer>
+
+  <!-- Modal (centered, animated, click-outside-to-close) -->
+ <!-- Modal -->
+<div id="courseModal" 
+     class="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm hidden flex items-center justify-center z-50"
+     onclick="if(event.target.id==='courseModal'){closeModal()}">
+  <div id="modalBox" 
+       class="bg-white rounded-xl shadow-2xl max-w-md w-full p-6 transform transition-all duration-300 scale-95 opacity-0">
+    <h3 id="modalTitle" class="text-2xl font-bold mb-4 text-gray-900"></h3>
+    <p id="modalDescription" class="text-gray-700 mb-6"></p>
+    <!-- No close button -->
+  </div>
+</div>
+
+
+  <script>
+  const modal = document.getElementById('courseModal');
+  const modalBox = document.getElementById('modalBox');
+  const modalTitle = document.getElementById('modalTitle');
+  const modalDescription = document.getElementById('modalDescription');
+
+  const courseDetails = {
+    HTML: "HTML is the foundation of web pages. Learn to structure content and build websites.",
+    CSS: "CSS lets you style websites beautifully. Explore layouts, colors, and animations.",
+    "Artificial Intelligence": "Learn A.I to build the next big thing in A.I.",
+    Robotics: "Learn to program hardware and build intelligent robots.",
+    "Scratch Programming": "Visual programming for beginners using drag-and-drop blocks.",
+    "Python for Kids": "Start coding with Python — simple, powerful, and fun.",
+    JavaScript: "Make websites interactive with JavaScript — the language of the web.",
+    "Game Development": "Create games using engines like Unity or Scratch."
+  };
+
+  function openModal(course) {
+    modalTitle.textContent = course;
+    modalDescription.textContent = courseDetails[course] || "More information coming soon.";
+    modal.classList.remove('hidden');
+    setTimeout(() => {
+      modalBox.classList.remove('scale-95', 'opacity-0');
+      modalBox.classList.add('scale-100', 'opacity-100');
+    }, 10);
+  }
+
+  function closeModal() {
+    modalBox.classList.remove('scale-100', 'opacity-100');
+    modalBox.classList.add('scale-95', 'opacity-0');
+    setTimeout(() => {
+      modal.classList.add('hidden');
+    }, 200);
+  }
+</script>
+
+<!-- About Modal -->
+<div id="aboutModal" class="modal-bg hidden" onclick="closeModalOutside(event)">
+  <div class="modal-box" onclick="event.stopPropagation()">
+    <span class="modal-close" onclick="closeModal('aboutModal')">&times;</span>
+    
+    <!-- Robotic figure -->
+    <div class="flex justify-center mb-4">
+      <img src="assets/social-tags/robot.png" alt="Robot" class="w-24 h-24"/>
+    </div>
+    
+    <h2 class="text-2xl font-bold mb-4">Empowering Digital Learning</h2>
+    <p class="mb-4">
+      At GiftTech Innovators, we design learning experiences that spark curiosity and build future-ready skills.
+      Our team blends modern design with practical solutions, ensuring every project reflects the unique goals of our partners.
+    </p>
+    <p class="mb-6">
+      Whether you’re looking for school-based programs, self-paced courses, or interactive virtual spaces,
+      we are committed to delivering impactful results that make digital skills accessible and inspiring.
+    </p>
+
+    <!-- Stats -->
+    <div class="grid grid-cols-2 gap-6">
+      <div>
+        <h3 class="text-3xl font-bold">10+</h3>
+        <p>Awards for Innovation</p>
+      </div>
+      <div>
+        <h3 class="text-3xl font-bold">90+</h3>
+        <p>Partner Schools</p>
+      </div>
+      <div>
+        <h3 class="text-3xl font-bold">10+</h3>
+        <p>Years of Impact</p>
+      </div>
+      <div>
+        <h3 class="text-3xl font-bold">15,000+</h3>
+        <p>Students Reached</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+
+</body>
+</html>
