@@ -4,173 +4,73 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Student Dashboard - GiftTech Innovators</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <style>
-        /* Locked and course card styles */
-        .locked {
-            opacity: 0.5;
-            pointer-events: none;
-            filter: grayscale(100%);
-        }
-        .course-card {
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-        }
-        .course-card:hover:not(.locked) {
-            transform: translateY(-4px);
-            box-shadow: 0 8px 16px rgba(0,0,0,0.15);
-        }
-        .progress-bar {
-            background-color: #e5e7eb;
-            border-radius: 9999px;
-            height: 12px;
-            overflow: hidden;
-        }
-        .progress-fill {
-            background-color: #10b981;
-            height: 100%;
-            border-radius: 9999px;
-            width: 65%;
-        }
-        .nav-card {
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-        }
-        .nav-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-        }
-        .profile-pic {
-            position: relative;
-            display: inline-block;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-            border-radius: 50%;
-            transition: box-shadow 0.2s ease;
-        }
-        .profile-pic:hover {
-            box-shadow: 0 6px 12px rgba(0,0,0,0.3);
-        }
-        .profile-pic img, .profile-placeholder {
-            width: 210px;
-            height: 210px;
-            font-size: 72px;
-            border: 3px solid #2563eb;
-            border-radius: 50%;
-            object-fit: cover;
-        }
-        .profile-placeholder {
-            background-color: #2563eb;
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-        }
-        .add-pic-btn {
-            position: absolute;
-            top: -5px;
-            right: -5px;
-            background-color: #2563eb;
-            color: white;
-            border: none;
-            border-radius: 50%;
-            width: 22px;
-            height: 22px;
-            font-size: 14px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: background-color 0.2s ease;
-        }
-        .add-pic-btn:hover {
-            background-color: #1d4ed8;
-        }
-        #student-name {
-            text-transform: uppercase;
-            font-weight: bold;
-        }
-        .glass-card {
-            background: rgba(255, 255, 255, 0.3);
-            backdrop-filter: blur(15px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
-            border: 1px solid rgba(255,255,255,0.4);
-            border-radius: 1rem;
-            padding: 2rem;
-            color: #000;
-        }
-        .glass-card h3, .glass-card h2 {
-            color: #000;
-            font-weight: bold;
-            text-transform: uppercase;
-        }
-    </style>
 </head>
-<body class="bg-gray-100 text-gray-900">
+<body>
     <!-- Mobile Sidebar Toggle -->
-    <button id="sidebar-toggle" class="md:hidden fixed top-4 left-4 z-50 bg-blue-600 text-white p-2 rounded shadow" aria-label="Toggle Sidebar">
+    <button id="sidebar-toggle" aria-label="Toggle Sidebar">
         ☰
     </button>
 
-    <div class="min-h-screen flex">
+    <div>
         <!-- Sidebar -->
-        <aside id="sidebar" class="w-64 p-6 space-y-4 fixed md:relative z-40 md:z-auto shadow-lg border rounded-lg hidden md:block" style="top: 64px; left: 0;">
-            <div class="glass-card text-center mb-6">
-                <div class="profile-pic mx-auto mb-2">
-                    <div id="profile-placeholder" class="profile-placeholder">J</div>
+        <aside id="sidebar">
+            <div>
+                <div>
+                    <div id="profile-placeholder">J</div>
                     <img id="profile-img" src="" alt="Student Profile Picture" style="display: none;">
-                    <button class="add-pic-btn" onclick="document.getElementById('file-input').click()" title="Add Profile Picture">+</button>
+                    <button onclick="document.getElementById('file-input').click()" title="Add Profile Picture">+</button>
                 </div>
-                <h3 id="student-name" class="text-lg font-bold text-white mb-2">John Doe</h3>
-                <h2 class="text-xl font-bold text-center text-white">Dashboard</h2>
-                <input type="file" id="file-input" accept="image/*" style="display: none;" onchange="updateProfilePic()">
+                <h3 id="student-name">John Doe</h3>
+                <h2>Dashboard</h2>
+                <input type="file" id="file-input" accept="image/*" onchange="updateProfilePic()">
             </div>
         </aside>
 
         <!-- Main Content -->
-        <div class="flex-1 flex flex-col md:ml-0 pt-20">
-             <header class="w-full fixed top-0 left-0 bg-blue-600 text-white p-4 flex items-center shadow z-50">
-                <h1 class="text-xl font-bold flex-1">GiftTech Innovators</h1>
-                <button onclick="logout()" class="bg-white text-blue-600 px-4 py-2 rounded hover:bg-gray-200 transition">Logout</button>
+        <div>
+             <header>
+                <h1>GiftTech Innovators</h1>
+                <button onclick="logout()">Logout</button>
              </header>
 
-
-            <main class="p-6 space-y-6">
+            <main>
                 <!-- Quick Access -->
-                <section class="bg-white p-6 rounded-lg shadow-md">
-                    <h2 class="text-lg font-bold mb-4 text-blue-600">Quick Access</h2>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                        <a href="assignments.html" class="nav-card bg-blue-50 p-4 rounded-lg border text-center hover:bg-blue-100 transition">
-                            <h3 class="text-md font-semibold text-blue-600">Assignments</h3>
-                            <p class="text-sm text-gray-600">View and submit your assignments.</p>
+                <section>
+                    <h2>Quick Access</h2>
+                    <div>
+                        <a href="assignments.html">
+                            <h3>Assignments</h3>
+                            <p>View and submit your assignments.</p>
                         </a>
-                        <a href="resources.html" class="nav-card bg-green-50 p-4 rounded-lg border text-center hover:bg-green-100 transition">
-                            <h3 class="text-md font-semibold text-green-600">Resources</h3>
-                            <p class="text-sm text-gray-600">Access learning materials.</p>
+                        <a href="resources.html">
+                            <h3>Resources</h3>
+                            <p>Access learning materials.</p>
                         </a>
-                        <a href="announcements.html" class="nav-card bg-yellow-50 p-4 rounded-lg border text-center hover:bg-yellow-100 transition">
-                            <h3 class="text-md font-semibold text-yellow-600">Announcements</h3>
-                            <p class="text-sm text-gray-600">Stay updated with latest news.</p>
+                        <a href="announcements.html">
+                            <h3>Announcements</h3>
+                            <p>Stay updated with latest news.</p>
                         </a>
                     </div>
                 </section>
 
                 <!-- Welcome, Progress, Notifications -->
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    <section class="bg-white p-6 rounded-lg shadow-md">
-                        <h2 class="text-lg font-bold mb-2 text-blue-600">Welcome, Student!</h2>
-                        <p class="text-gray-700">Here’s your personalized dashboard overview. Check your assigned courses below.</p>
+                <div>
+                    <section>
+                        <h2>Welcome, Student!</h2>
+                        <p>Here's your personalized dashboard overview. Check your assigned courses below.</p>
                     </section>
 
-                    <section class="bg-white p-6 rounded-lg shadow-md">
-                        <h2 class="text-lg font-bold mb-2 text-blue-600">Progress</h2>
-                        <div class="progress-bar mb-2">
-                            <div class="progress-fill"></div>
+                    <section>
+                        <h2>Progress</h2>
+                        <div>
+                            <div></div>
                         </div>
-                        <p class="text-sm text-gray-600">65% overall course completion</p>
+                        <p>65% overall course completion</p>
                     </section>
 
-                    <section class="bg-white p-6 rounded-lg shadow-md">
-                        <h2 class="text-lg font-bold mb-2 text-blue-600">Notifications</h2>
-                        <ul class="list-disc list-inside text-gray-700 space-y-1">
+                    <section>
+                        <h2>Notifications</h2>
+                        <ul>
                             <li>New assignment posted</li>
                             <li>Project deadline extended</li>
                         </ul>
@@ -178,74 +78,73 @@
                 </div>
 
                 <!-- My Courses -->
-                <section class="bg-white p-6 rounded-lg shadow-md">
-                    <h2 class="text-2xl font-bold mb-4 text-blue-600">My Courses</h2>
-                    <p class="text-gray-600 mb-6">Only your assigned courses are unlocked. Click to start learning!</p>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                <section>
+                    <h2>My Courses</h2>
+                    <p>Only your assigned courses are unlocked. Click to start learning!</p>
+                    <div>
                         <!-- Python -->
-<div class="course-card bg-gradient-to-br from-green-100 to-blue-100 p-4 rounded-lg shadow border">
-    <div class="text-center mb-3"><span class="text-4xl">🐍</span></div>
-    <h3 class="text-lg font-semibold text-center mb-2">Python</h3>
-    <p class="text-sm text-gray-600 text-center mb-4">Learn Python basics and build projects.</p>
-    <a href="course-python.html" class="block text-center bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700 transition">Start Course</a>
-</div>
+                        <div>
+                            <div><span>🐍</span></div>
+                            <h3>Python</h3>
+                            <p>Learn Python basics and build projects.</p>
+                            <a href="course-python.html">Start Course</a>
+                        </div>
 
-<!-- Scratch Animation -->
-<div class="course-card bg-gray-100 p-4 rounded-lg shadow border">
-    <div class="text-center mb-3"><span class="text-4xl">🎨</span></div>
-    <h3 class="text-lg font-semibold text-center mb-2">Scratch Animation</h3>
-    <p class="text-sm text-gray-600 text-center mb-4">Create animations with Scratch.</p>
-    <a href="course-scratch-animation.html" class="block text-center bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700 transition">Start Course</a>
-</div>
+                        <!-- Scratch Animation -->
+                        <div>
+                            <div><span>🎨</span></div>
+                            <h3>Scratch Animation</h3>
+                            <p>Create animations with Scratch.</p>
+                            <a href="course-scratch-animation.html">Start Course</a>
+                        </div>
 
-<!-- Scratch Games -->
-<div class="course-card bg-gray-100 p-4 rounded-lg shadow border">
-    <div class="text-center mb-3"><span class="text-4xl">🎮</span></div>
-    <h3 class="text-lg font-semibold text-center mb-2">Scratch Games</h3>
-    <p class="text-sm text-gray-600 text-center mb-4">Build games with Scratch.</p>
-    <a href="course-scratch-games.html" class="block text-center bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700 transition">Start Course</a>
-</div>
+                        <!-- Scratch Games -->
+                        <div>
+                            <div><span>🎮</span></div>
+                            <h3>Scratch Games</h3>
+                            <p>Build games with Scratch.</p>
+                            <a href="course-scratch-games.html">Start Course</a>
+                        </div>
 
-<!-- CSS -->
-<div class="course-card bg-gray-100 p-4 rounded-lg shadow border">
-    <div class="text-center mb-3"><span class="text-4xl">🎨</span></div>
-    <h3 class="text-lg font-semibold text-center mb-2">CSS</h3>
-    <p class="text-sm text-gray-600 text-center mb-4">Style websites with CSS.</p>
-    <a href="course-css.html" class="block text-center bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700 transition">Start Course</a>
-</div>
+                        <!-- CSS -->
+                        <div>
+                            <div><span>🎨</span></div>
+                            <h3>CSS</h3>
+                            <p>Style websites with CSS.</p>
+                            <a href="course-css.html">Start Course</a>
+                        </div>
 
-<!-- HTML -->
-<div class="course-card bg-gradient-to-br from-orange-100 to-red-100 p-4 rounded-lg shadow border">
-    <div class="text-center mb-3"><span class="text-4xl">🌐</span></div>
-    <h3 class="text-lg font-semibold text-center mb-2">HTML</h3>
-    <p class="text-sm text-gray-600 text-center mb-4">Build web structures with HTML.</p>
-    <a href="course-html.html" class="block text-center bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700 transition">Start Course</a>
-</div>
+                        <!-- HTML -->
+                        <div>
+                            <div><span>🌐</span></div>
+                            <h3>HTML</h3>
+                            <p>Build web structures with HTML.</p>
+                            <a href="course-html.html">Start Course</a>
+                        </div>
 
-<!-- Robotics -->
-<div class="course-card bg-gray-100 p-4 rounded-lg shadow border">
-    <div class="text-center mb-3"><span class="text-4xl">⚙️</span></div>
-    <h3 class="text-lg font-semibold text-center mb-2">Robotics</h3>
-    <p class="text-sm text-gray-600 text-center mb-4">Design and build robots.</p>
-    <a href="course-robotics.html" class="block text-center bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700 transition">Start Course</a>
-</div>
+                        <!-- Robotics -->
+                        <div>
+                            <div><span>⚙️</span></div>
+                            <h3>Robotics</h3>
+                            <p>Design and build robots.</p>
+                            <a href="course-robotics.html">Start Course</a>
+                        </div>
 
-<!-- Game Development -->
-<div class="course-card bg-gray-100 p-4 rounded-lg shadow border">
-    <div class="text-center mb-3"><span class="text-4xl">🎯</span></div>
-    <h3 class="text-lg font-semibold text-center mb-2">Game Development</h3>
-    <p class="text-sm text-gray-600 text-center mb-4">Create your own games.</p>
-    <a href="course-gamedev.html" class="block text-center bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700 transition">Start Course</a>
-</div>
+                        <!-- Game Development -->
+                        <div>
+                            <div><span>🎯</span></div>
+                            <h3>Game Development</h3>
+                            <p>Create your own games.</p>
+                            <a href="course-gamedev.html">Start Course</a>
+                        </div>
 
-<!-- A.I. -->
-<div class="course-card bg-gray-100 p-4 rounded-lg shadow border">
-    <div class="text-center mb-3"><span class="text-4xl">🤖</span></div>
-    <h3 class="text-lg font-semibold text-center mb-2">A.I.</h3>
-    <p class="text-sm text-gray-600 text-center mb-4">Learn and interact with A.I.</p>
-    <a href="course-ai.html" class="block text-center bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700 transition">Start Course</a>
-</div>
-
+                        <!-- A.I. -->
+                        <div>
+                            <div><span>🤖</span></div>
+                            <h3>A.I.</h3>
+                            <p>Learn and interact with A.I.</p>
+                            <a href="course-ai.html">Start Course</a>
+                        </div>
                     </div>
                 </section>
             </main>
@@ -253,7 +152,7 @@
     </div>
 
     <!-- Footer -->
-    <footer class="w-full bg-gray-800 text-white p-4 text-center">
+    <footer>
         <p>&copy; 2025 GiftTech Innovators</p>
     </footer>
 
